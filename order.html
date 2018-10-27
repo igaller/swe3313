@@ -2,7 +2,9 @@
 <html>
     
 <style>
+    
     @import url(https://fonts.googleapis.com/css?family=Cabin+Sketch:700|Patrick+Hand+SC|Waiting+for+the+Sunrise);
+    
     p {
         text-align: center;
         font-weight: bold;
@@ -16,40 +18,60 @@
         text-align: center;
     }
     
-    .info {
-        text-align: center;
-    }
-    
     form {
         border: 1px solid black;
         color: white;
         background: black;
+        margin: 0 auto;
+    }
+    
+    .customerinfo {
+        border-bottom: 1px solid white;
+        text-align: center;
+
+    }
+
+    td {
+        text-align: left;
     }
     
     h1 {
         font-family: Cabin Sketch;
     }
-    
+     
 </style>    
     
 <body>
-  <div id="wrapper">
   <div id="inputs">
   <div>
 <form name="input" action="#" method="post">
       
       
 <!--Customer info-->
-    <div class="info">
-  <h1>Order</h1>
-    First name: <input type="text" name="firstname" placeholder="John"><br>
-    Last name: <input type="text" name="lastname" placeholder="Smith"><br>
-    Phone Number: <input type="text" name="phone" placeholder="(123)456-7890"><br>
-    Address:<input type="email" name="email" placeholder="1234 Street City, ST Zip">
-    </div>
     
+    <h1 style="text-align: center;">Order</h1>
+    
+  <div class="customerinfo">
+    <div>First name:</div>
+
+    <div><input type="text" name="firstname" placeholder="John"></div>
 <br>
-  
+    <div>Last name:</div>
+
+     <div><input type="text" name="lastname" placeholder="Smith"></div>
+<br>
+    <div>Phone Number:</div>
+
+      <div><input type="text" name="phone" placeholder="(123)456-7890"></div>
+<br>
+    <div>Address:</div>
+
+      <div><input type="email" name="email" placeholder="1234 Street City, ST Zip">
+          
+      </div>
+      
+    </div>
+     
 <!--Crust--> 
     <div class="check">
      <p>Pizza toppings (Check all that apply)</p>
@@ -74,8 +96,7 @@
         <input type='checkbox'>Normal Cheese
         <input type='checkbox'>Heavy Cheese
          </div>
-
-      
+     
 <!--Toppings-->  
      <div class="check">
       <p>Pizza toppings (Check all that apply)</p>
@@ -110,9 +131,13 @@
 	  <p></p>
       <input type="submit" value="Submit" href="#">
          </div>
+    
 </form>
+      
 </div>
+      
 </div>
-</div>
+          
 </body>
+    
 </html>

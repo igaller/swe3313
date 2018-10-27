@@ -1,21 +1,186 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-    <title></title>
-    <head></head>
-    <Script></Script>
-    <style>
-        .list {
-            border: 1px solid black;
-        }
-    </style>
-<body>
     
- <div class="list">
+    <head>
+        
+        <title>The Pizza Shop</title>
+                
+<style>
     
+    @import url(https://fonts.googleapis.com/css?family=Cabin+Sketch:700|Patrick+Hand+SC|Waiting+for+the+Sunrise);
     
+    body {
+        
+        margin: 0;
+        font-family: Cabin Sketch;
+        
+         }
     
-</div>
+    .hero {
     
-</body>
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: white;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url('pacmanpizza.jpg');
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        
+            }
 
+    .hero h1 {
+
+        font-size: 5em;
+        margin-top: 0;
+        margin-bottom: 0.5em;
+        
+            }
+    
+    .hero .btn1 {
+        
+        display: block;
+        width: 100px;
+        padding: .2em;
+        margin-top: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        color: white;
+        text-decoration: none;
+        font-size: 1.3em;
+        border: 3px solid black;
+        border-radius: 20px;
+        background-color: rgba(229, 50, 50, 1);
+        float: right;
+                }
+    
+     .hero .btn2 {
+        
+        display: block;
+        width: 100px;
+        padding: .2em;
+        margin-top: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        color: white;
+        text-decoration: none;
+        font-size: 1.3em;
+        border: 3px solid black;
+        border-radius: 20px;
+        background-color: rgba(229, 50, 50, 1);
+        float: left;
+                }
+    
+    ul#menu li {
+        
+        display: inline;
+    }
+        
+        </style>
+        
+    </head>
+
+    <body>
+        
+        <section class="hero">
+            
+            <div class="hero-inner">
+                <h1>A Pizza the Menu</h1>
+                
+                <a href="order.html" class="btn1">Order</a>
+                <a href="index.html" class="btn2">Back</a>
+                <br>
+                <br>
+                <br>
+                <h2>Pizza</h2>
+                
+                <h5>(Slice 8", Small 10", Medium 14" or Large 18")</h5>
+                
+                    <div>
+                        <details>
+                            <summary>
+                                Pepperoni Pizza........................$2/$9/$12/$15
+                            </summary>
+                                <p>Thinly sliced pepperoni and four cheeses with your choice of pizza size.</p>
+                        </details>
+                        <details>
+                            <summary>
+                                Meat Lover Pizza.......................$2/$9/$12/$15
+                            </summary>
+                                <p>Sausage, Pepperoni and chicken with your choice of pizza size.</p>
+                        </details>
+                        <details>
+                            <summary>
+                                Cheese Pizza..............................$2/$9/$12/$15
+                            </summary>
+                                <p>A mix of four types of cheese with your choice of pizza size.</p>
+                        </details>
+                        <details>
+                            <summary>
+                                Veggie Lover Pizza....................$2/$9/$12/$15
+                            </summary>
+                                <p>Mushrooms, onions, peppers and spinach with your choice of pizza size.</p>
+                        </details>
+                        <details>
+                            <summary>
+                                Create Your Own Pizza............$2/$9/$12/$15
+                            </summary>
+                                <p>Choose from a selection of various pizza crusts, cheeses, sauces and toppings. </p>
+                        </details>
+                    </div>
+                
+                <h2>Beverages</h2>
+                    <div>
+                        <details>
+                            <summary>
+                                Soda...........................$2
+                            </summary>
+                                <p>Your choice of Coke, Diet Coke, Coke Zero, Sprite, and  Powerade</p>
+                        </details>
+                        <details>
+                            <summary>
+                                Juice......................$1.50
+                            </summary>
+                                <p>Bottled Apple Juice</p>
+                        </details>
+                        <details>
+                            <summary>
+                                Water..........................$1
+                            </summary>
+                                <p>Bottled Water</p>
+                        </details>
+                    </div>
+                
+                <h2>Dessert</h2>
+                    <div>
+                         <details>
+                            <summary>
+                                Brownies.......................$3.99
+                            </summary>
+                                <p>Your choice of fudge or a nut brownie.</p>
+                        </details>
+                         <details>
+                            <summary>
+                                Cookies..........................$2.99
+                            </summary>
+                                <p>Your choice of sugar, chocolate, or raisin cookie.</p>
+                        </details>
+                         <details>
+                            <summary>
+                                Donuts..........................$3.00
+                            </summary>
+                                <p>Your choice of Original or Chocolate donuts.</p>
+                        </details>
+                    </div>
+                
+            </div>
+            
+        </section>
+        
+    </body>
+    
 </html>
