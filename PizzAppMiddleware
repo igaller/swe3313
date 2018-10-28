@@ -1,0 +1,799 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace PizzApp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string ans = " ";
+            Console.WriteLine("Welcome to the Pizza App");
+            Console.Write("Would you like to 'Sign Up'?(Y/N): ");
+            ans =  Console.ReadLine().ToUpper();
+
+            if (ans.ToUpper() == "Y")
+            {
+                Customer c = new Customer();
+                Console.Write("Enter Name: ");
+                c.Name = Console.ReadLine();
+                Console.Write("Enter PhoneNumber: ");
+                c.PhoneNumber = Convert.ToInt64(Console.ReadLine());
+                Console.Write("Enter Street Address: ");
+                c.Street = Console.ReadLine();
+                Console.Write("Enter City: ");
+                c.City = Console.ReadLine();
+                Console.Write("Enter State: ");
+                c.State = Console.ReadLine();
+                Console.Write("Enter ZipCode: ");
+                c.ZipCode = Convert.ToInt32(Console.ReadLine());
+                Console.Write("Enter Payment Type: ");
+                c.PaymentType = Console.ReadLine();
+
+                Console.WriteLine(c.ToString());
+                
+                Console.Write("Would you like to order PreMade or Custom?(P/C) ");
+                ans = Console.ReadLine();
+                while (ans.ToUpper() == "P" || ans.ToUpper() == "C")
+                {
+
+                    if (ans.ToUpper() == "P")
+                    {
+                        c.GetPreMadePizza();
+                        //Console.WriteLine("here");
+                    }
+                    else
+                    {
+                        c.GetCustomPizza();
+                    }
+
+                    Console.WriteLine("Would you like to order PreMade or Custom?(P/C) ");
+                    Console.Write("Or would you like to end the order?(Y)");
+                    ans = Console.ReadLine();
+                }
+
+                Console.WriteLine("Customer: " + c.Name);
+                c.PrintPizzaStash();
+
+            }           
+           
+
+        }
+    }
+
+    class Customer
+    {
+        //Extract information from the database
+        //Functions to compute certain values
+        //Output information to the website
+
+        //Customer Object----------------------------------------------------------------------------
+
+        private string name;
+        private long phoneNumber;
+        private string street;
+        private string city;
+        private string state;
+        private int zipCode;
+        private string paymentType;
+        private static int add;
+        Pizza[] pizzaStash = new Pizza[20];
+
+        public Customer() { }
+
+        public Customer(long PhoneNumber, string Name, string Street, string City, string State, int ZipCode, string PaymentType)
+        {
+            this.phoneNumber = PhoneNumber;
+            this.name = Name;
+            this.street = Street;
+            this.city = City;
+            this.State = State;
+            this.zipCode = ZipCode;
+            this.paymentType = PaymentType;
+        }
+
+
+        public long PhoneNumber
+        {
+            get
+            {
+                return phoneNumber;
+            }
+
+            set
+            {
+                phoneNumber = value;
+            }
+        }
+
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+
+            set
+            {
+                name = value;
+            }
+        }
+
+        public string Street
+        {
+            get
+            {
+                return street;
+            }
+
+            set
+            {
+                street = value;
+            }
+        }
+
+        public string City
+        {
+            get
+            {
+                return city;
+            }
+
+            set
+            {
+                city = value;
+            }
+        }
+
+        public string State
+        {
+            get
+            {
+                return state;
+            }
+
+            set
+            {
+                state = value;
+            }
+        }
+
+        public int ZipCode
+        {
+            get
+            {
+                return zipCode;
+            }
+
+            set
+            {
+                zipCode = value;
+            }
+        }
+
+        public string PaymentType
+        {
+            get
+            {
+                return paymentType;
+            }
+
+            set
+            {
+                paymentType = value;
+            }
+        }
+
+       
+        //----------------------------------------------------------------------------------------------
+
+        //Customer Pizza Selection----------------------------------------------------------------------
+        //PreMade Pizza
+        public void GetPreMadePizza()
+        {
+            Pizza prP = new Pizza();
+            Console.WriteLine("Enter the number of pizzas you'd like to order. Enter '0' when not choosing a pizza: ");
+            Console.Write("Pepperoni Slice Pizza (Qty): ");
+            prP.PepperoniPizzaSliceQty = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("\n");
+            Console.Write("Meat Lover Slice Pizza: ");
+            prP.MeatLoverPizzaSliceQty = Convert.ToInt32(Console.ReadLine());
+            AddPizza(prP);                 
+            
+        }
+        //Customized Pizza
+        public void GetCustomPizza()
+        {
+            Console.WriteLine("Select pizza crust first, then select the quantity of each item");
+            Pizza cp = new Pizza();
+            bool select = false;
+            string pselect = " ";
+            Console.Write("ThinCrust?(Y/N): ");
+            pselect = Console.ReadLine();
+            if (pselect.ToUpper() == "Y")
+            {
+                select = true;
+                cp.IsThinCrust = select;
+            }
+            else
+            {
+                select = false;
+                cp.IsThinCrust = select;
+            }
+
+            Console.Write("Light Cheese?: ");
+            cp.LightCheeseQty = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Pepperoni?: ");
+            cp.PepperoniQty = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Sausage?: ");
+            cp.SausageQty = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Chicken?: ");
+            cp.ChickenQty = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Mushroom?: ");
+            cp.MushroomQty = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Onions?: ");
+            cp.OnionQty = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Pepper?: ");
+            cp.PepperQty = Convert.ToInt32(Console.ReadLine());
+
+            AddPizza(cp);
+
+        }
+        //---------------------------------------------------------------------------------------------
+
+        //Add a Pizza to the Customer
+        public void AddPizza(Pizza pAdd)
+        {
+            pizzaStash[add] = pAdd;
+            add++;
+        }
+
+        //Print all the Customer Pizzas
+        public void PrintPizzaStash()
+        {
+            for(int i = 0; i < add; i++)
+            {
+                Console.Write(pizzaStash[i]);
+            }
+        }
+
+        public override string ToString()
+        {
+            return "\n" + "Name: " + Name + "\n" + "Phone Number: " + PhoneNumber + "\n" + "Street: " + Street + "\n" + "City: " + City + "\n" + "State: " + State + "\n" + "ZipCode: " + ZipCode + "\n" + "Payment Type: " + PaymentType + "\n";
+
+        }
+        
+    }
+
+  
+
+    class Pizza
+    {
+        
+        private double pepperoniPizzaSlicePrice;
+        private int pepperoniPizzaSliceQty;
+        private double pepperoniPizzaSmallPrice;
+        private int pepperoniPizzaSmallQty;
+        private double pepperoniPizzaMediumPrice;
+        private int pepperoniPizzaMediumQty;
+        private double pepperoniPizzaLargePrice;
+        private int pepperoniPizzaLargeQty;
+
+        private double meatLoverPizzaSlicePrice;
+        private int meatLoverPizzaSliceQty;
+        private double meatLoverPizzaSmallPrice;
+        private int meatLoverPizzaSmallQty;
+        private double meatLoverPizzaMediumPrice;
+        private int meatLoverPizzaMediumQty;
+        private double meatLoverPizzaLargePrice;
+        private int meatLoverPizzaLargeQty;
+
+        //Crust
+        private double thinCrustPrice;
+        private bool isThinCrust;
+        //Sauce
+        private double lightSauce;
+        //Cheese
+        private int lightCheeseQty;
+        private double lightCheesePrice;
+        //Toppings
+        private int pepperoniQty;
+        private double pepperoniPrice;
+        private int sausageQty;
+        private double sausagePrice;
+        private int chickenQty;
+        private double chickenPrice;
+        private int mushroomQty;
+        private double mushroomPrice;
+        private int onionQty;
+        private double onionPrice;
+        private int pepperQty;
+        private double pepperPrice;
+
+        public Pizza()
+        {
+            this.pepperoniPizzaSlicePrice = 2;
+            this.pepperoniPizzaSmallPrice = 9;
+            this.pepperoniPizzaMediumPrice = 12;
+            this.pepperoniPizzaLargePrice = 15;
+       
+            this.meatLoverPizzaSlicePrice = 2;
+            this.meatLoverPizzaSmallPrice = 9;
+            this.meatLoverPizzaMediumPrice = 12;
+            this.meatLoverPizzaLargePrice = 15;
+    }
+
+      
+        //Pepperoni Pizza
+        public double PepperoniPizzaSlicePrice
+        {
+            get
+            {
+                return pepperoniPizzaSlicePrice;
+            }
+
+            set
+            {
+                pepperoniPizzaSlicePrice = value;
+            }
+        }
+
+        public int PepperoniPizzaSliceQty
+        {
+            get
+            {
+                return pepperoniPizzaSliceQty;
+            }
+
+            set
+            {
+                pepperoniPizzaSliceQty = value;
+            }
+        }
+
+        public double PepperoniPizzaSmallPrice
+        {
+            get
+            {
+                return pepperoniPizzaSmallPrice;
+            }
+
+            set
+            {
+                pepperoniPizzaSmallPrice = value;
+            }
+        }
+
+        public int PepperoniPizzaSmallQty
+        {
+            get
+            {
+                return pepperoniPizzaSmallQty;
+            }
+
+            set
+            {
+                pepperoniPizzaSmallQty = value;
+            }
+        }
+
+        public double PepperoniPizzaMediumPrice
+        {
+            get
+            {
+                return pepperoniPizzaMediumPrice;
+            }
+
+            set
+            {
+                pepperoniPizzaMediumPrice = value;
+            }
+        }
+
+        public int PepperoniPizzaMediumQty
+        {
+            get
+            {
+                return pepperoniPizzaMediumQty;
+            }
+
+            set
+            {
+                pepperoniPizzaMediumQty = value;
+            }
+        }
+
+        public double PepperoniPizzaLargePrice
+        {
+            get
+            {
+                return pepperoniPizzaLargePrice;
+            }
+
+            set
+            {
+                pepperoniPizzaLargePrice = value;
+            }
+        }
+
+        public int PepperoniPizzaLargeQty
+        {
+            get
+            {
+                return pepperoniPizzaLargeQty;
+            }
+
+            set
+            {
+                pepperoniPizzaLargeQty = value;
+            }
+        }
+
+        //Meat Lover Pizza
+        public double MeatLoverPizzaSlicePrice
+        {
+            get
+            {
+                return meatLoverPizzaSlicePrice;
+            }
+
+            set
+            {
+                meatLoverPizzaSlicePrice = value;
+            }
+        }
+
+        public int MeatLoverPizzaSliceQty
+        {
+            get
+            {
+                return meatLoverPizzaSliceQty;
+            }
+
+            set
+            {
+                meatLoverPizzaSliceQty = value;
+            }
+        }
+
+        public double MeatLoverPizzaSmallPrice
+        {
+            get
+            {
+                return meatLoverPizzaSmallPrice;
+            }
+
+            set
+            {
+                meatLoverPizzaSmallPrice = value;
+            }
+        }
+
+        public int MeatLoverPizzaSmallQty
+        {
+            get
+            {
+                return meatLoverPizzaSmallQty;
+            }
+
+            set
+            {
+                meatLoverPizzaSmallQty = value;
+            }
+        }
+
+        public double MeatLoverPizzaMediumPrice
+        {
+            get
+            {
+                return meatLoverPizzaMediumPrice;
+            }
+
+            set
+            {
+                meatLoverPizzaMediumPrice = value;
+            }
+        }
+
+        public int MeatLoverPizzaMediumQty
+        {
+            get
+            {
+                return meatLoverPizzaMediumQty;
+            }
+
+            set
+            {
+                meatLoverPizzaMediumQty = value;
+            }
+        }
+
+        public double MeatLoverPizzaLargePrice
+        {
+            get
+            {
+                return meatLoverPizzaLargePrice;
+            }
+
+            set
+            {
+                meatLoverPizzaLargePrice = value;
+            }
+        }
+
+        public int MeatLoverPizzaLargeQty
+        {
+            get
+            {
+                return meatLoverPizzaLargeQty;
+            }
+
+            set
+            {
+                meatLoverPizzaLargeQty = value;
+            }
+        }
+
+        //Other Toppings
+
+        public double ThinCrustPrice
+        {
+            get
+            {
+                return thinCrustPrice;
+            }
+
+            set
+            {
+                thinCrustPrice = value;
+            }
+        }
+
+        public bool IsThinCrust
+        {
+            get
+            {
+                return isThinCrust;
+            }
+
+            set
+            {
+                isThinCrust = value;
+            }
+        }
+
+        public double LightSauce
+        {
+            get
+            {
+                return lightSauce;
+            }
+
+            set
+            {
+                lightSauce = value;
+            }
+        }
+
+        public int LightCheeseQty
+        {
+            get
+            {
+                return lightCheeseQty;
+            }
+
+            set
+            {
+                lightCheeseQty = value;
+            }
+        }
+
+        public double LightCheesePrice
+        {
+            get
+            {
+                return lightCheesePrice;
+            }
+
+            set
+            {
+                lightCheesePrice = value;
+            }
+        }
+
+        public int PepperoniQty
+        {
+            get
+            {
+                return pepperoniQty;
+            }
+
+            set
+            {
+                pepperoniQty = value;
+            }
+        }
+
+        public double PepperoniPrice
+        {
+            get
+            {
+                return pepperoniPrice;
+            }
+
+            set
+            {
+                pepperoniPrice = value;
+            }
+        }
+
+        public int SausageQty
+        {
+            get
+            {
+                return sausageQty;
+            }
+
+            set
+            {
+                sausageQty = value;
+            }
+        }
+
+        public double SausagePrice
+        {
+            get
+            {
+                return sausagePrice;
+            }
+
+            set
+            {
+                sausagePrice = value;
+            }
+        }
+
+        public int ChickenQty
+        {
+            get
+            {
+                return chickenQty;
+            }
+
+            set
+            {
+                chickenQty = value;
+            }
+        }
+
+        public double ChickenPrice
+        {
+            get
+            {
+                return chickenPrice;
+            }
+
+            set
+            {
+                chickenPrice = value;
+            }
+        }
+
+        public int MushroomQty
+        {
+            get
+            {
+                return mushroomQty;
+            }
+
+            set
+            {
+                mushroomQty = value;
+            }
+        }
+
+        public double MushroomPrice
+        {
+            get
+            {
+                return mushroomPrice;
+            }
+
+            set
+            {
+                mushroomPrice = value;
+            }
+        }
+
+        public int OnionQty
+        {
+            get
+            {
+                return onionQty;
+            }
+
+            set
+            {
+                onionQty = value;
+            }
+        }
+
+        public double OnionPrice
+        {
+            get
+            {
+                return onionPrice;
+            }
+
+            set
+            {
+                onionPrice = value;
+            }
+        }
+
+        public int PepperQty
+        {
+            get
+            {
+                return pepperQty;
+            }
+
+            set
+            {
+                pepperQty = value;
+            }
+        }
+
+        public double PepperPrice
+        {
+            get
+            {
+                return pepperPrice;
+            }
+
+            set
+            {
+                pepperPrice = value;
+            }
+        }
+
+        public override string ToString()
+        {
+            return "\n" + "PepperoniPizzaSliceQty: " + PepperoniPizzaSliceQty + "\n" + "PepperoniPizzaSmallQty: " + PepperoniPizzaSmallQty + "\n" + "PepperoniPizzaMediumQty: " + PepperoniPizzaMediumQty + "\n" + "PepperoniPizzaLargeQty: " + pepperoniPizzaLargeQty
+                + "\n" + "MeatLoverPizzaSliceQty: " + MeatLoverPizzaSliceQty + "\n" + "MeatLoverPizzaSmallQty: " + MeatLoverPizzaSmallQty + "\n" + "MeatLoverPizzaMediumQty: " + MeatLoverPizzaMediumQty + "\n" + "MeatLoverLargeQtyt: " + MeatLoverPizzaLargeQty + "\n"
+                + "ThinCrust: " + IsThinCrust + "\n" + "LightSauce: " + LightSauce + "\n" + "LightCheeseQty: " + LightCheeseQty + "\n" + "PepperoniQty: " + PepperoniQty + "\n" + "SausageQty: " + SausageQty + "\n" + "ChickenQty: " + ChickenQty + "\n"
+                + "MushroomQty: " + MushroomQty + "\n" + "OnionQty: " + OnionQty + "\n" + "PepperQty: " + PepperQty + "\n";
+        }
+
+    }
+
+    
+   class Order
+   {
+       private int orderID;
+       private double totalAmount;
+       private int orderStatusID;
+       private string orderStatusName;
+
+      public Order() { }
+    
+      public Order(int OrderID, double TotalAmount, int OrderStatusID, string OrderStatusName)
+       {
+           this.orderID = OrderID;
+           this.totalAmount = TotalAmount;
+           this.orderStatusID = OrderStatusID;
+       }
+
+   }
+   
+}
