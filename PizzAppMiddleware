@@ -57,10 +57,17 @@ namespace PizzApp
 
                 Console.WriteLine("Customer: " + c.Name);
                 c.PrintPizzaStash();
+                ExportCustomer(c);
+
 
             }           
-           
 
+        }
+
+        static Customer ExportCustomer(Customer c)
+        {
+            Customer customer = c;
+            return customer;
         }
     }
 
