@@ -1,48 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Pizza
-{
-    class Drink
-    {
-        private String drinkName = null;
-        private double drinkPrice = null;
+namespace Pizza {
+    class Drink {
+        String name = null;
+        double price = -1.0;
 
-        public string DrinkName
-        {
-            get
-            {
-                return drinkName;
-            }
+        public string Name { get => name; set => name = value; }
+        public double Price { get => price; set => price = value; }
 
-            set
-            {
-                drinkName = value;
-            }
-        }
+        public String toString() {
 
-        public double DrinkPrice
-        {
-            get
-            {
-                return drinkPrice;
-            }
-
-            set
-            {
-                drinkPrice = value;
-            }
-        }
-
-        public String toString()
-        {
-            String[] drinkData = new string[4];
-            drinkData[0] = Utility.quote(creditCardNumber);
-            drinkData[1] = Utility.quote(CreditCardName);
-            drinkData[2] = Utility.quote(CreditCardNumber);
-            drinkData[1] = Utility.quote(CreditCardExpiration);
-
-            String collectDrink = string.Join(",", drinkData);
-            return collectDrink;
+            String str = null;
+            return str;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Pizza {
     class Customer {
@@ -11,6 +12,7 @@ namespace Pizza {
         private String state = null;
         private String zip = null;
         private Order order = null;
+        private List<CreditCard> cards = new List<CreditCard>();
 
         public string PhoneNumber { get => phoneNumber; set => phoneNumber = value; }
         public string FirstName { get => firstName; set => firstName = value; }
@@ -21,6 +23,7 @@ namespace Pizza {
         public string State { get => state; set => state = value; }
         public string Zip { get => zip; set => zip = value; }
         internal Order Order { get => order; set => order = value; }
+        internal List<CreditCard> Cards { get => cards; set => cards = value; }
 
         public Customer() {
 
@@ -42,5 +45,6 @@ namespace Pizza {
             String str = string.Join(",", attributes);
             return str;
         }
+        
     }
 }
