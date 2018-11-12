@@ -1,6 +1,9 @@
 <!DOCTYPE HTML>
+
 <html>
     
+<head>
+       
 <style>
     
     @import url(https://fonts.googleapis.com/css?family=Cabin+Sketch:700|Patrick+Hand+SC|Waiting+for+the+Sunrise);
@@ -19,9 +22,7 @@
     }
     
     form {
-        border: 1px solid black;
         color: white;
-        background: black;
         margin: 0 auto;
     }
     
@@ -38,18 +39,97 @@
     h1 {
         font-family: Cabin Sketch;
     }
-     
-</style>    
+    
+    body {
+        
+        margin: 0;
+        font-family: Cabin Sketch;
+        
+         }
+    
+    .hero {
+    
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: white;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url('pacmanpizza.jpg');
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        
+            }
+
+    .hero h1 {
+
+        font-size: 5em;
+        margin-top: 0;
+        margin-bottom: 0.5em;
+        
+            }
+    
+    .hero .btn1 {
+        
+        display: block;
+        width: 100px;
+        padding: .2em;
+        margin-top: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        color: white;
+        text-decoration: none;
+        font-size: 1.3em;
+        border: 3px solid black;
+        border-radius: 20px;
+        background-color: rgba(229, 50, 50, 1);
+        float: right;
+                }
+    
+     .hero .btn2 {
+        
+        display: block;
+        width: 100px;
+        padding: .2em;
+        margin-top: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        color: white;
+        text-decoration: none;
+        font-size: 1.3em;
+        border: 3px solid black;
+        border-radius: 20px;
+        background-color: rgba(229, 50, 50, 1);
+        float: left;
+                }
+    
+    ul#menu li {
+        
+        display: inline;
+    }
+    
+</style>   
+    
+</head> 
     
 <body>
-  <div id="inputs">
-  <div>
-<form name="input" action="#" method="post">
-      
-      
+
+    <section class="hero">
+            
+        <div class="hero-inner"> 
+    
+            <div id="inputs">
+                
+                <div>
+                    
+                    <form name="input" action="#" method="post">
+          
 <!--Customer info-->
     
-    <h1 style="text-align: center;">Order</h1>
+    <h1 style="text-align: center">Order</h1>
     
   <div class="customerinfo">
     <div>First name:</div>
@@ -69,8 +149,9 @@
       <div><input type="email" name="email" placeholder="1234 Street City, ST Zip">
           
       </div>
-      
+      <br>
     </div>
+                        
      
 <!--Crust--> 
     <div class="check">
@@ -129,14 +210,18 @@
     <p>Comments:<br></p>
 	  <textarea></textarea>
 	  <p></p>
-      <input type="submit" value="Submit" href="#">
+      <input type="submit" value="Checkout" href="checkout.html">
          </div>
     
 </form>
       
-</div>
+                </div>
       
-</div>
+            </div>
+                
+        </div>
+            
+    </section>
           
 </body>
     
